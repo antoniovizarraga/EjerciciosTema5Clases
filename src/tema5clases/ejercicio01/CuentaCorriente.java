@@ -91,7 +91,11 @@ public class CuentaCorriente {
 	}
 
 	
-	
+	/**
+	 * Función que saca dinero de la cuenta corriente.
+	 * @param dinero Variable donde tendrá la cantidad de dinero a sacar
+	 * @return Devuelve un booleano que indica si la transacción se pudo realizar o no.
+	 */
 	public boolean sacarDinero(double dinero) {
 		boolean transaccion = false;
 		
@@ -103,12 +107,19 @@ public class CuentaCorriente {
 		return transaccion;
 	}
 	
+	/**
+	 * Función que ingresa el dinero a la cuenta.
+	 * @param dinero Cantidad de dinero a ingresar
+	 */
 	public void ingresarDinero(double dinero) {
 		if (dinero > 0) {
 			this.sueldo += dinero;
 		}
 	}
 
+	/**
+	 * Función que muestra la información de la cuenta corriente.
+	 */
 	public void mostrarInformacion() {
 		System.out.println("Titular: " + this.nombre);
 		System.out.println("DNI: " + this.DNI);
