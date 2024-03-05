@@ -20,7 +20,7 @@ public class CuentaCorriente {
 	/**
 	 * Atributo que tendrá el sueldo.
 	 */
-	private float sueldo;
+	private double sueldo;
 	
 
 	/**
@@ -86,25 +86,35 @@ public class CuentaCorriente {
 	 * Función que devuelve el sueldo del usuario.
 	 * @return sueldo Devuelve el sueldo del usuario.
 	 */
-	public float getSueldo() {
+	public double getSueldo() {
 		return sueldo;
 	}
 
-	/**
-	 * Función que establece un valor al sueldo del usuario.
-	 * @param sueldo El sueldo inicial del usuario.
-	 */
-	public void setSueldo(float sueldo) {
-		if (sueldo >= 0)
-			this.sueldo = sueldo;
+	
+	
+	public boolean sacarDinero(double dinero) {
+		boolean transaccion = false;
+		
+		if(this.sueldo >= dinero) {
+			this.sueldo -= dinero;
+			transaccion = true;
+		}
+		
+		return transaccion;
+	}
+	
+	public void ingresarDinero(double dinero) {
+		if (dinero > 0) {
+			this.sueldo += dinero;
+		}
+	}
 
+	public void mostrarInformacion() {
+		System.out.println("Titular: " + this.nombre);
+		System.out.println("DNI: " + this.DNI);
+		System.out.println("Saldo: " + this.sueldo);
 	}
 	
 	
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
 
 }
