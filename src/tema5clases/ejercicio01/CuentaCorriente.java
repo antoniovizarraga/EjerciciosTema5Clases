@@ -9,12 +9,12 @@ public class CuentaCorriente {
 	/**
 	 * Atributo que tendrá el DNI.
 	 */
-	private String DNI;
+	private String DNI = "";
 	
 	/**
 	 * Atributo que tendrá el nombre.
 	 */
-	private String nombre;
+	private String nombre = "";
 	
 	
 	/**
