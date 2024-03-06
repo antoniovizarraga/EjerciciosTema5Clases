@@ -23,7 +23,7 @@ public class Articulo {
 	private int cuantosQuedan;
 
 	/**
-	 * Función constructora que inicializa los atributos pasados como parámetros.
+	 * Constructor que inicializa los atributos pasados como parámetros.
 	 * 
 	 * @param nombre        El nombre del artículo
 	 * @param precio        El precio del artículo
@@ -34,8 +34,13 @@ public class Articulo {
 			this.nombre = nombre;
 		}
 
-		this.precio = precio;
-		this.cuantosQuedan = cuantosQuedan;
+		if (precio > 0) {
+			this.precio = precio;
+		}
+
+		if (cuantosQuedan > 0) {
+			this.cuantosQuedan = cuantosQuedan;
+		}
 
 	}
 
@@ -74,7 +79,9 @@ public class Articulo {
 	 * @param Atributo precio pasado como parámetro
 	 */
 	public void setPrecio(float precio) {
-		this.precio = precio;
+		if (precio > 0) {
+			this.precio = precio;
+		}
 	}
 
 	/**
@@ -94,7 +101,9 @@ public class Articulo {
 	 *                      stock.
 	 */
 	public void setCuantosQuedan(int cuantosQuedan) {
-		this.cuantosQuedan = cuantosQuedan;
+		if (cuantosQuedan > 0) {
+			this.cuantosQuedan = cuantosQuedan;
+		}
 	}
 
 	/**
@@ -105,7 +114,6 @@ public class Articulo {
 
 		cadena += "Nombre: " + this.nombre + "\n";
 		cadena += "Precio: " + this.precio + "\n";
-		cadena += "IVA: " + "21" + "\n";
 		cadena += "Stock: " + this.cuantosQuedan + "\n";
 
 		return cadena;
@@ -136,7 +144,7 @@ public class Articulo {
 
 		float descuentoOperacion = descuento / 100;
 
-		pvp = precio * IVA;
+		pvp = getPVP();
 		pvp *= descuentoOperacion;
 
 		return pvp;
@@ -144,27 +152,31 @@ public class Articulo {
 
 	/**
 	 * Función que actualiza los atributos cuando un artículo es vendido.
+	 * 
 	 * @param cantidadVendida Stock de cuántas unidades se vende de cada artículo.
 	 * @return Devuelve true o false si se pudo hacer la actualización o no.
 	 */
 	public boolean vender(int cantidadVendida) {
 		boolean transaccion = false;
 
-		if (cuantosQuedan >= cantidadVendida) {
+		if (cuantosQuedan >= cantidadVendida && cantidadVendida > 0) {
 			this.cuantosQuedan -= cantidadVendida;
 			transaccion = true;
 		}
 
 		return transaccion;
 	}
-	
+
 	/**
 	 * Función que establece cuántas unidades de x artículo se van a almacenar.
+	 * 
 	 * @param cantidadAlmacenada Stock de cuántas unidades van a ser almacenadas.
 	 */
 	public void almacenar(int cantidadAlmacenada) {
-		this.cuantosQuedan += cantidadAlmacenada;
+		if (cantidadAlmacenada > 0) {
+			this.cuantosQuedan += cantidadAlmacenada;
+		}
+
 	}
-	
-	
+
 }
